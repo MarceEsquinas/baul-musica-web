@@ -1,4 +1,3 @@
-// src/components/header.jsx
 import { Link, NavLink } from "react-router-dom"; //moverte entre páginas sin
 import logo from "../assets/logo-baul.png"; // cargar el logo
 
@@ -10,7 +9,8 @@ export const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur supports-[backdrop-filter]:bg-gray-900/60">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="h-20 flex items-center justify-between">
+        <div className="h-20
+         flex items-center justify-between">
           {/* Logo + nombre */}
           <Link to="/" className="flex items-center gap-3">
             <img

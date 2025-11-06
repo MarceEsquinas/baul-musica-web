@@ -1,4 +1,3 @@
-// src/components/Footer.jsx
 import logo from "../assets/logo-baul.png";
 
 export const Footer = () => {
