@@ -1,17 +1,11 @@
-import { LandingContent } from "../components/landingContent"
-import { Footer } from "../components/footer"
-import { Header } from "../components/header"
-import { LogoutButton } from "../components/logouthButton"
+import { Header } from "../components/header";
+import { CreateListForm } from "../components/createListForm";
 
 export const Playlist = () => {
     return (
         <div className="flex flex-col h-screen w-full">
-            <Header /> <LogoutButton/>
-            
-            <LandingContent />
-            
-            <Footer />
-            
+            <Header /> 
+            <CreateListForm/>
         
         </div>
     )
