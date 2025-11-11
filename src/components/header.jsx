@@ -1,5 +1,7 @@
 import { Link, NavLink } from "react-router-dom"; //moverte entre páginas sin
 import logo from "../assets/logo-baul.png"; // cargar el logo
+import { UserGreeting } from "./userGreeting";
+
 
 export const Header = () => {
   const linkBase =
@@ -8,6 +10,7 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur supports-[backdrop-filter]:bg-gray-900/60">
+      
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="h-20
          flex items-center justify-between">
@@ -50,6 +53,7 @@ export const Header = () => {
             >
               Login
             </NavLink>
+            <UserGreeting/>
           </nav>
         </div>
       </div>
