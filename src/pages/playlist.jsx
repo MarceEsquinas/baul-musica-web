@@ -3,6 +3,7 @@ import { CreateListForm } from "../components/createListForm";
 import { DeleteListButton } from "../components/deleteListButton";
 import { Header } from "../components/header";
 import { Footer } from "../components/footer";
+import { Link } from "react-router-dom";
 
 export const Playlist = () => {
   const [lists, setLists] = useState([]);
@@ -71,8 +72,14 @@ export const Playlist = () => {
                     Creada: {new Date(l.creada_en).toLocaleDateString()}
                   </p>
                 )}
+                <Link
+                  to={`/playlist/${l.id_lista}`}
+                  className="mt-3 inline-block text-sm text-pink-400 hover:text-pink-300"
+    >
+                  Ver detalles →
+                 </Link>
 
-                {/* Botón eliminar */}
+                {/*Botón eliminar*/ }
                 <DeleteListButton idLista={l.id_lista} onDeleted={handleDeleted} />
               </li>
             ))}
