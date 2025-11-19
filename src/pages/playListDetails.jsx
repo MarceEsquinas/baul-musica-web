@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Header } from "../components/header";
 import { Footer } from "../components/footer";
 import { AddItemToListForm } from "../components/addItemToListForm";
+import { AlbumSongsPreview } from "../components/AlbumSongsPreview";
 
 export const PlaylistDetail = () => {
   const { id } = useParams();              // /playlist/:id
@@ -192,6 +193,9 @@ export const PlaylistDetail = () => {
                         {nombre || "(sin nombre)"}
                       </p>
                       <p className="text-xs text-gray-400">{tipo}</p>
+                      {esAlbum && (
+                      <AlbumSongsPreview albumId={it.id_album} />
+                       )}
                     </div>
                     <button
                       onClick={() => handleDelete(it.id_elemento_lista)}

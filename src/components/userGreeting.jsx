@@ -20,7 +20,7 @@ export const UserGreeting = () => {
   if (!userName) return null; // si no hay usuario, no muestra nada
 
   return (
-    <span className="text-sm text-gray-200 font-medium">
+    <span className="text-sm text-gray-100 font-medium">
       👋 Bienvenido, <span className="text-pink-400">{userName}</span>
     </span>
   );
