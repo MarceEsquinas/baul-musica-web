@@ -22,10 +22,7 @@ export const ListasPublicas = () => {
   headers: { Authorization: `Bearer ${token}` },
 });
 
-      /*  const res = await fetch("http://localhost:2000/api/lists/public/all", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-*/
+   
         const data = await res.json().catch(() => []);
 
         if (!res.ok) {

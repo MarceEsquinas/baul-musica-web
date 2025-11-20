@@ -5,6 +5,7 @@ import { Header } from "../components/header";
 import { Footer } from "../components/footer";
 import { AddItemToListForm } from "../components/addItemToListForm";
 import { AlbumSongsPreview } from "../components/AlbumSongsPreview";
+import { ReviewWidget } from "../components/ReviewWidget";
 
 export const PlaylistDetail = () => {
   const { id } = useParams();              // /playlist/:id
@@ -196,6 +197,8 @@ export const PlaylistDetail = () => {
                       {esAlbum && (
                       <AlbumSongsPreview albumId={it.id_album} />
                        )}
+                       {/* ⬇⬇ Widget de reseñas para este elemento de lista */}
+                       <ReviewWidget idElemento={it.id_elemento_lista} />
                     </div>
                     <button
                       onClick={() => handleDelete(it.id_elemento_lista)}
