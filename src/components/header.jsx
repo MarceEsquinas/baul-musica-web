@@ -4,10 +4,11 @@ import { UserGreeting } from "./userGreeting";
 
 
 export const Header = () => {
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
   const linkBase =
     "text-gray-200 hover:text-pink-400 transition font-medium";
   const linkActive = "text-pink-400";
-
+  
   return (
     <header className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur supports-[backdrop-filter]:bg-gray-900/60">
       
@@ -24,6 +25,7 @@ export const Header = () => {
             <span className="text-white text-lg font-semibold tracking-wide">
               El Baúl de la Música
             </span>
+            
           </Link>
 
           {/* Navegación */}
@@ -59,8 +61,17 @@ export const Header = () => {
             >
               publicas
             </NavLink>
-            
+              {user.rol === "admin" && (
+              <NavLink
+              to="/admin"
+              className={({ isActive }) => (isActive ? linkActive : linkBase)}
+             >
+             Admin
+             </NavLink>
+  )}
+
             <UserGreeting/>
+           
           </nav>
         </div>
       </div>
