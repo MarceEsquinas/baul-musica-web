@@ -7,7 +7,7 @@ import { Songs } from './pages/songs'
 import {Routes, Route} from "react-router-dom"
 import { ProtectedRoute } from './components/protectedRoute'
 import { Register } from './pages/register'
-import { ListasPublicas } from './pages/listasPublicas';
+import { PublicList } from './pages/PublicList';
 import { AdminPanel } from "./pages/adminPanel";
 
 
@@ -23,7 +23,7 @@ function App() {
        <Route path="/playlist" element={<Playlist/>} />
         <Route path="/playlist/:id" element={<PlaylistDetail />} />
        <Route path="/songs" element={<Songs/>} />
-       <Route path="/listasPublicas" element={<ListasPublicas/>} />
+       <Route path="/PublicList" element={<PublicList/>} />
        <Route path="/admin" element={<AdminPanel />} />
       </Route>
     </Routes>

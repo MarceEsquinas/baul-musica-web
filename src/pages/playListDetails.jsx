@@ -15,6 +15,37 @@ export const PlaylistDetail = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [makingPublic, setMakingPublic] = useState(false);
+
+  const handleMakePublic = async () => {
+    if (!localStorage.getItem("token")) {
+      alert("No hay sesión iniciada");
+      return;
+    }
+    if (makingPublic) return;
+    setMakingPublic(true);
+    try {
+      const res = await fetch(`http://localhost:2000/api/lists/${id}/public`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({ es_publica: true }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        setListInfo((prev) => ({ ...prev, es_publica: true }));
+      } else {
+        alert(data.message || "No se pudo hacer pública la lista");
+      }
+    } catch (e) {
+      console.error("handleMakePublic ERROR:", e);
+      alert("Error de conexión al cambiar visibilidad");
+    } finally {
+      setMakingPublic(false);
+    }
+  };
 
   const token = localStorage.getItem("token");
 
@@ -154,17 +185,26 @@ export const PlaylistDetail = () => {
           ← Volver a mis listas
         </button>
 
-        <div>
-          <h1 className="text-2xl font-bold text-white">
-            {listInfo?.nombre_lista || `Lista ${id}`}
-          </h1>
-          {listInfo?.creada_en && (
-            <p className="text-sm text-gray-400">
-              Creada el{" "}
-              {new Date(listInfo.creada_en).toLocaleDateString()}
-            </p>
-          )}
-        </div>
+        <div className="mb-4 flex items-center justify-between gap-3">
+  <h1 className="text-2xl font-bold text-white">
+    {listInfo?.nombre_lista}
+  </h1>
+
+  {listInfo?.es_publica ? (
+    <span className="rounded-full border border-emerald-400/50 px-3 py-1 text-xs text-emerald-300">
+      Pública ✔
+    </span>
+  ) : (
+    <button
+      onClick={handleMakePublic}
+      disabled={makingPublic}
+      className="rounded-full bg-pink-600 px-3 py-1 text-xs font-semibold text-white hover:bg-pink-500 disabled:opacity-60"
+    >
+      {makingPublic ? "Guardando..." : "Hacer pública"}
+    </button>
+  )}
+</div>
+
 
         {/* Formulario para añadir álbumes/canciones a esta lista */}
         <AddItemToListForm idLista={id} onAdded={handleAdded} />

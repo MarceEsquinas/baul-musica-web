@@ -56,7 +56,7 @@ export const Header = () => {
               Login
             </NavLink>
             <NavLink
-              to="/listasPublicas"
+              to="/PublicList"
               className={({ isActive }) => (isActive ? linkActive : linkBase)}
             >
               publicas
